@@ -12,12 +12,12 @@ const LegalNoticePopup: React.FC<LegalNoticePopupProps> = ({
   if (!isOpen) return null; // Prevent rendering when not open
 
   return (
-    <div className="fixed top-40 left-0 right-0 bottom-10 z-80 flex items-center justify-center bg-gray-800 bg-opacity-50 p-4 md:p-16">
-      <div className="w-full max-w-2xl overflow-y-auto max-h-[calc(100vh-10rem)] bg-white p-6 rounded-lg shadow-lg">
+    <div className="fixed inset-0 z-80 flex items-center justify-center bg-gray-800 bg-opacity-50 p-4">
+      <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white p-4 md:p-6 rounded-lg shadow-lg">
         {/* Fixed Close Button */}
         <button
           onClick={onClose}
-          className="absolute right-3 top-3 rounded-full bg-gray-200 p-2 text-gray-500 hover:text-gray-800"
+          className="absolute right-5 top-20 rounded-full bg-gray-200 p-2 text-gray-500 hover:text-gray-800"
           aria-label="Close"
         >
           {`×`}
