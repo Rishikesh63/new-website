@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect } from "react";
 
 interface PrivacyPolicyPopupProps {
   isOpen: boolean;
@@ -9,30 +10,42 @@ const PrivacyPolicyPopup: React.FC<PrivacyPolicyPopupProps> = ({
   isOpen,
   onClose,
 }) => {
-  if (!isOpen) return null; // Prevent rendering when not open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
+  if (!isOpen) return null;// Prevent rendering when not open
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
-      <div className="relative w-full max-w-3xl rounded-lg bg-white shadow-lg">
+    <div className="fixed top-40 left-0 right-0 bottom-10 z-80 flex items-center justify-center bg-gray-800 bg-opacity-50 p-4 md:p-16">
+
+      <div className="w-full max-w-2xl overflow-y-auto max-h-[calc(100vh-10rem)] bg-white p-6 rounded-lg shadow-lg">
         {/* Fixed Close Button */}
         <button
           onClick={onClose}
-          className="absolute right-3 top-3 rounded-full bg-gray-200 p-2 text-gray-500 hover:text-gray-800"
+          className="absolute right-3 top-4 rounded-full bg-gray-200 p-2 text-gray-500 hover:text-gray-800"
           aria-label="Close"
         >
           ×
         </button>
 
         {/* Scrollable Content */}
-        <div className="max-h-[80vh] overflow-y-auto p-8 pt-12">
-          <h2 className="mb-4 text-2xl font-bold text-indigo-600">
+        <div className="px-4 py-6 md:px-8 md:py-10 space-y-10 max-w-prose mx-auto text-justify">
+          <h2 className="text-3xl font-bold text-indigo-600 md:text-4xl">
             {`Privacy Policy for DevRhylme Foundation`}
           </h2>
 
-          <h3 className="mb-2 text-lg font-semibold text-indigo-600">
+          <h3 className="text-xl md:text-2xl font-semibold text-indigo-600 leading-snug mt-8">
             {`Introduction`}
           </h3>
-          <p className="text-gray-700">
+          <p className="text-base md:text-lg text-gray-700 leading-relaxed">
             {`Welcome to Devrhylme.org ("we," "our," or "us"). Your privacy is of
             paramount importance to us. This Privacy Policy outlines the types
             of information we collect, how we use it, and the steps we take to

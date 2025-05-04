@@ -12,8 +12,8 @@ const LegalNoticePopup: React.FC<LegalNoticePopupProps> = ({
   if (!isOpen) return null; // Prevent rendering when not open
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
-      <div className="relative w-full max-w-3xl rounded-lg bg-white shadow-lg">
+    <div className="fixed top-40 left-0 right-0 bottom-10 z-80 flex items-center justify-center bg-gray-800 bg-opacity-50 p-4 md:p-16">
+      <div className="w-full max-w-2xl overflow-y-auto max-h-[calc(100vh-10rem)] bg-white p-6 rounded-lg shadow-lg">
         {/* Fixed Close Button */}
         <button
           onClick={onClose}
@@ -24,8 +24,8 @@ const LegalNoticePopup: React.FC<LegalNoticePopupProps> = ({
         </button>
 
         {/* Scrollable Content */}
-        <div className="max-h-[80vh] overflow-y-auto p-8 pt-12">
-          <h2 className="mb-4 text-2xl font-bold text-indigo-600">
+        <div className="px-4 py-6 md:px-8 md:py-10 space-y-10 max-w-prose mx-auto text-justify">
+          <h2 className="text-3xl font-bold text-indigo-600 md:text-4xl">
             {`Legal Notice for DevRhylme Foundation`}
           </h2>
 
